@@ -1,8 +1,77 @@
+<?php
+
+   /*
+    *cabeçalho para funcoes,variaveis e conexao com a base
+    */
+   $rp = './admin/';
+   include_once $rp.'_inc/global.php';
+   require_once $rp.'_inc/db.php';
+   include_once $rp.'_inc/global_function.php';
+
+
+
+    /*
+     *query das notícias
+     */
+    $sql_not = "SELECT not_id, not_titulo, not_tipo
+                  FROM ".TABLE_PREFIX."_noticia
+
+                      WHERE not_titulo IS NOT NULL
+                            AND not_status=1
+
+                            ORDER BY not_data DESC
+                            LIMIT 0,2";
+
+    $qry_not= $conn->prepare($sql_not);
+    $qry_not->execute();
+    $qry_not->store_result();
+    $qry_not->bind_result($id, $titulo, $tipo);
+
+
+
+
+
+    /*
+     *query dos destaques
+     */
+    $sql_dest = "SELECT dest_id, dest_titulo, dest_imagem, dest_link
+                  FROM ".TABLE_PREFIX."_destaque
+
+                      WHERE dest_imagem IS NOT NULL
+                            AND dest_status=1
+
+                            ORDER BY dest_data DESC
+                            LIMIT 0,5";
+
+    $qry_dest= $conn->prepare($sql_dest);
+    $qry_dest->execute();
+    $qry_dest->store_result();
+    $qry_dest->bind_result($id, $titulo, $imagem, $link);
+
+
+
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Untitled Document</title>
+<title>DEC</title>
+
+  <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src="js/coin-slider.min.js"></script>
+  <script>
+
+    $(function() {
+
+      $('#coin-slider').coinslider({ width: 350, height:170, navigation: false, delay: 5000 });
+
+    });
+
+  </script>
+
+  <link rel="stylesheet" href="js/coin-slider-styles.css" type="text/css" /> 
+
 <style type="text/css">
 body {
 	margin-left: 0px;
@@ -66,9 +135,52 @@ body {
       <tr>
         <td width="740"><table width="700" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="360" height="214" align="center" valign="middle" background="images/pagina_inicial/bg_destaque.jpg"><span class="textoPadrao">Destaque em JS rotativo</span></td>
+            <td width="360" height="214" align="center" valign="middle" background="images/pagina_inicial/bg_destaque.jpg">
+
+
+              <div id='coin-slider'>
+              <?php
+
+                $i = 0;
+                while($qry_dest->fetch()) {
+
+                  echo "<a href='img${i}_url'>";
+                  echo "<img src='images/destaque/${imagem}' border=0/>";
+                  echo "<span>${titulo}</span>";
+                  echo "</a>";
+
+                 $i++;
+                }
+
+              ?>
+              </div>
+
+
+            </td>
             <td width="25">&nbsp;</td>
-            <td align="center" valign="middle"><span class="textoPadrao">NOTICÍAS</span></td>
+            <td align="left" valign="top">
+              <span class="textoPadrao">NOTICÍAS</span>
+
+              <h3>Enade</h3>
+              <?php
+
+                $i = 0;
+                while($qry_not->fetch()) {
+
+                  if($i==1)
+                    echo "<h3>Universidades</h3>";
+
+
+                  echo "<a href='noticias.php?item=${id}'>${titulo}</a>";
+
+
+                 $i++;
+                }
+
+              ?>
+
+
+            </td>
           </tr>
         </table></td>
       </tr>
@@ -121,7 +233,7 @@ body {
     </table></td>
   </tr>
   <tr>
-    <td height="26" align="left" valign="top""><img src="images/bg/bg_rodape2.png" width="764" height="26" border="0" /></td>
+    <td height="26" align="left" valign="top"><img src="images/bg/bg_rodape2.png" width="764" height="26" border="0" /></td>
   </tr>
 </table>
 </body>
