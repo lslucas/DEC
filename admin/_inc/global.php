@@ -27,7 +27,7 @@
  define('DB_SERVER','127.0.0.1');
  define('DB_USER','root');
  define('DB_PASS','phocus06');
- define('DB_DATABASE','compra');
+ define('DB_DATABASE','dec');
  } else {
  define('DB_SERVER','187.45.196.182');
  define('DB_USER','musclemass');
@@ -35,7 +35,7 @@
  define('DB_DATABASE','musclemass');
  }
 #prefixo das tabelas
- define('TABLE_PREFIX','cc'); 
+ define('TABLE_PREFIX','dec');
 
 
 # VARIAVEIS DE CONTROLE
@@ -64,8 +64,8 @@
 # VARIAVEIS GLOBAIS
 ###################
 
- define('SITE_NAME','Compras Coletivas');
- define('SITE_MIN','comprascoletivas');
+ define('SITE_NAME','DEC');
+ define('SITE_MIN','dec');
  if ($_SERVER['HTTP_HOST']=='localhost') define('SITE_URL','http://localhost/'.SITE_MIN.'/');
  else define('SITE_URL',$host);
  define('HOST', $_SERVER['HTTP_HOST']);
