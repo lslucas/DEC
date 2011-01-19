@@ -27,9 +27,6 @@
 		 if ($qry_status->execute()) {
 			echo "<b>${nome}</b> agora está <b>${novoStatusT}</b>";
 
-     #insere o video caso exista 
-     include_once 'mod.exec.xml.php';
-
      }
 
    $qry_status->close();

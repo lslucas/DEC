@@ -1,6 +1,5 @@
-
-
 <?php
+
  if (isset($_FILES)) {
 
   include_once "_inc/class.upload.php";
@@ -8,7 +7,7 @@
    $w=$pos=0;
 
 
-       if (isset($_FILES['imagem']['name']) && is_file($_FILES['imagem']['tmp_name']) ) {
+ if (isset($_FILES['imagem']['name']) && is_file($_FILES['imagem']['tmp_name']) ) {
 
 
 	 $filename = $res['item'].'_'.rand();
@@ -21,7 +20,7 @@
 
 	   $handle->file_new_name_body  = $filename;
 	   $handle->image_resize        = true;
-	   $handle->image_ratio_y       = true;
+	   $handle->image_ratio_y       = false;
 	   $handle->image_x             = $var['imagemWidth'];
 	   $handle->image_y             = $var['imagemHeight'];
 	   $handle->process($var['path_imagem']);
@@ -29,25 +28,23 @@
 
 	   $handle->file_new_name_body  = $filename;
 	   $handle->image_resize        = true;
-	   $handle->image_ratio_y       = true;
+	   $handle->image_ratio_y       = false;
 	   $handle->image_x             = $var['thumbWidth'];
 	   $handle->image_y             = $var['thumbHeight'];
 	   $handle->process($var['path_thumb']);
 	   if (!$handle->processed) echo 'error : ' . $handle->error;
 
 
-	        $imagem = $handle->file_dst_name;
-		$sql_img = "UPDATE ".TABLE_PREFIX."_${var['table']} 
-				SET ${var['pre']}_imagem='${imagem}'
-			    WHERE
-		    	     ${var['pre']}_id=".$res['item'];
+	   $imagem = $handle->file_dst_name;
+		$sql_img = "UPDATE ".TABLE_PREFIX."_${var['table']} SET ${var['pre']}_imagem='${imagem}' WHERE ${var['pre']}_id=".$res['item'];
 		$qry_img = $conn->query($sql_img);
-		#$qry_img->close();
+    /*
+		 *$qry_img->close();
+     */
 
 
-         }
-      }
-
-
+   }
  }
-?>
+
+
+}

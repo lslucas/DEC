@@ -6,11 +6,10 @@ $sql = "SELECT
 		DATE_FORMAT(${var['pre']}_data,'%d/%m/%y') data,
 		${var['pre']}_link,
 		${var['pre']}_imagem,
-		${var['pre']}_video,
 		${var['pre']}_status
 
 	  FROM ".TABLE_PREFIX."_${var['table']}
-	  
+	
 	  ORDER BY ${var['pre']}_data DESC";
 
 
@@ -19,9 +18,8 @@ $sql = "SELECT
 
   } else {
 
-    #$sql->bind_param('s', $data); 
     $qry->execute();
-    $qry->bind_result($id,$titulo,$data,$link,$imagem, $video, $status);
+    $qry->bind_result($id, $titulo, $data, $link, $imagem, $status);
 ?>
 <h1><?=$var['mono_plural']?></h1>
 <p class='header'></p>
@@ -35,7 +33,7 @@ $sql = "SELECT
         <th style='min-width:120px;'>Título</th>
         <th style='min-width:120px;'>Link</th>
       </tr>
-   </thead>  
+   </thead>
    <tbody>
 <?php
 
@@ -57,14 +55,13 @@ $row_actions .= <<<end
 end;
 
    if ($status==1)
-     $row_actions .= '<font color="#000000">Ativo</font>'; 
-     
+     $row_actions .= '<font color="#000000">Ativo</font>';
+
      else $row_actions .= '<font color="#999999">Pendente</font>';
 
 
 $row_actions .= '</a>';
 
-$permissoes='';
 ?>
 
       <tr id="tr<?=$id?>">
@@ -73,14 +70,12 @@ $permissoes='';
 	  <a id='ima<?=$j?>' href="$im<?=$j?>?width=100%" class="betterTip" style="cursor:pointer;">
 	    <img src="images/lupa.gif">
 	  </a>
-	  
+	
 	  <div id="im<?=$j?>" style="float:left;display:none">
 	      <?php 
 	        $arquivo = substr($var['path_thumb'],0).'/'.$imagem;
-	        $video = substr($var['path_video'],0).'/'.$video;
 
 		if (is_file($arquivo)) echo "<img src='{$arquivo}'>";
-     elseif(is_file($video)) echo 'SWF ou FLV';
 		  else echo 'sem imagem ou vídeo/swf';
 	      ?>
 	  </div>
@@ -108,4 +103,3 @@ $permissoes='';
 
   }
 ?>
-

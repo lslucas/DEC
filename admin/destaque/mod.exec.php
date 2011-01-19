@@ -9,7 +9,7 @@
 # include de mensagens do arquivo atual
  include_once 'inc.exec.msg.php';
 
-  if(empty($_FILES['imagem']['name']) && empty($_FILES['video']['name']) && $res['act']=='insert')
+  if(empty($_FILES['imagem']['name']) && $res['act']=='insert')
     die($msgVazio);
 
 
@@ -38,12 +38,11 @@
 
   		  ${var['pre']}_titulo=?,
   		  ${var['pre']}_data=?,
-  		  ${var['pre']}_texto=?,
-		  ${var['pre']}_link=?
+		    ${var['pre']}_link=?
 	";
      $sql.=" WHERE ${var['pre']}_id=?";
      $qry=$conn->prepare($sql);
-     $qry->bind_param('ssssi', $res['titulo'], $res['data'], $res['texto'], $res['link'], $res['item']); 
+     $qry->bind_param('sssi', $res['titulo'], $res['data'], $res['link'], $res['item']);
      $qry->execute();
 
 
@@ -51,14 +50,9 @@
     else {
 
      $qry->close();
+
      #insere as fotos/galeria do artigo
      include_once 'mod.exec.galeria.php';
-
-     #insere o video caso exista 
-     include_once 'mod.exec.video.php';
-
-     #insere o video caso exista 
-     include_once 'mod.exec.xml.php';
 
      echo $msgSucesso;
 

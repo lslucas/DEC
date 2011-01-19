@@ -20,25 +20,24 @@
     $var['update'] = 'Alterar '.$vr_singular;
 
 #UPLOAD DE ARQUIVOS
-    $var['imagemWidth'] = 900;
-    $var['imagemHeight'] = 385;
-    $var['thumbWidth'] = 180;
-    $var['thumbHeight'] = 77;
+    $var['imagemWidth'] = 350;
+    $var['imagemHeight'] = 175;
+    $var['thumbWidth'] = 70;
+    $var['thumbHeight'] = 35;
 
     $var['imagemWidth_texto'] = ' '.$var['imagemWidth'].'px (largura)';
     $var['imagemHeight_texto'] = ' '.$var['imagemHeight'].'px (altura)';
 
-    $var['path_imagem']   = $rp.'../banner_img/'.$var['path'];
-    $var['path_video']    = $rp.'../banner_img/'.$var['path'].'/video';
-    $var['path_original'] = $rp.'../banner_img/'.$var['path'].'/original';
-    $var['path_thumb']    = $rp.'../banner_img/'.$var['path'].'/thumb';
+    $var['path_imagem']   = PATH_IMG.'/'.$var['path'];
+    $var['path_original'] = PATH_IMG.'/'.$var['path'].'/original';
+    $var['path_thumb']    = PATH_IMG.'/'.$var['path'].'/thumb';
 
     $var['imagem_folderlist'] = $var['path_imagem'].','.$var['path_original'].','.$var['path_thumb'];
 
 
 
 
-    $field  = array('dest_id','dest_titulo','dest_imagem', 'dest_video', 'dest_data', 'dest_texto', 'dest_time', 'dest_random', 'dest_showheader', 'dest_link','dest_pos','dest_status');
+    $field  = array('dest_id','dest_titulo','dest_imagem', 'dest_data', 'dest_link','dest_pos','dest_status');
     $lfield = implode(',',$field);
     $vfield = implode(',$',$field);
     $vfield = '$'.$vfield;
