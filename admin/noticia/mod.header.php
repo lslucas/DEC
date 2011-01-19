@@ -10,53 +10,23 @@ $include_css = <<<end
      <link href="${rp}js/date-picker/css/datepicker.css" rel="stylesheet" type="text/css" />
      <style>
        div.growlUI { 
-	background: url(${rp}images/warning.png) no-repeat;
-	height:50px;
+        background: url(${rp}images/warning.png) no-repeat;
        } div.growlUI h1, div.growlUI h2 {
-	color: white;
-	padding: 5px 5px 5px 60px;
-	text-align: left;
-	font-family:'Tahoma';
+        color: white;
+        padding: 5px 5px 5px 60px;
+        text-align: left;
+        font-family:'Tahoma';
        } td.showDragHandle {
-	background-image: url(${rp}images/drag.gif);
-	background-repeat: no-repeat;
-	background-position: center center;
-	cursor: move;
+        background-image: url(${rp}images/drag.gif);
+        background-repeat: no-repeat;
+        background-position: center center;
+        cursor: move;
 
       }.tDnD_whileDrag {
-	background-color: #eee;
+        background-color: #eee;
       }
      </style>
 end;
-
-
-# JS INCLUIDO NO inc.header.php, também pode conter codigo js <script>alert();</script>
-/*
-<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery.tipTip.js"></script>
-*/
-
-   $send_adm_id = '';
-   if($act=='insert') {
-
-     $radio_checkbox = "$('.radio').hide().removeClass('required').attr('disabled','disabled');";
-    
-   } else {
-
-     if($val['enviar_para']=='para todos') {
-
-		$radio_checkbox = "$('.checkbox').show();\n\t$('.radio').hide().attr('disabled','disabled');";
-
-      } else {
-
-	    $radio_checkbox = " $('.checkbox').hide().attr('disabled','disabled');\n\t$('.radio').show();";
-	    $send_adm_id = ", 'send_adm_id': $('#send_adm_id').val()";
-
-      }
-
-
-   }
-
 
 
 
@@ -71,8 +41,6 @@ $include_js = <<<end
     <script type="text/javascript" src="${rp}js/tinymce/jscripts/tiny_mce/jquery.tinymce.js"></script>
     <script type="text/javascript" src="${rp}js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="${rp}js/date-picker/js/datepicker.js"></script>
-    
-    
 
 <script>
   $(function(){
@@ -87,7 +55,7 @@ $include_js = <<<end
 		wrapper: 'li',
 		meta: "validate"
 	});
-      
+
 
       // mascara para data
       $('#data').mask('99/99/9999');
@@ -112,10 +80,10 @@ $include_js = <<<end
         onDrop: function(table, row) {
 
 	      $.ajax({
-		 type: "POST",
-		 url: "$p/inc.imagem.pos.php",
-		 data: $.tableDnD.serialize()
-	      });
+           type: "POST",
+           url: "$p/inc.imagem.pos.php",
+           data: $.tableDnD.serialize()
+              });
 
         }
     });
@@ -126,65 +94,6 @@ $include_js = <<<end
     }, function() {
         $(this.cells[0]).removeClass('showDragHandle');
     });
-
-
-
-
-    /*
-     *ao alterar o radio de para quem enviar executa acao
-     */
-    $('[name="to_all"]').change(function(){
-
-	if($(this).val()==0) {
-	   $('.checkbox').hide().removeClass('required').attr('disabled','disabled');
-	   $('.radio').show().addClass('required').removeAttr('disabled');
-	   $('#user_especifico').show();
-
-	} else {
-	   $('.checkbox').show().addClass('required').removeAttr('disabled');
-	   $('.radio').hide().removeClass('required').attr('disabled','disabled');
-	   $('#user_especifico option:selected').val('0')
-	   $('#user_especifico').hide()
-
-	}
-
-    });
-
-
-    $radio_checkbox
-
-
-
-
-    /*
-     *se a a noticia for direcionada a um usuario especifico
-	 *e for update, vai pegar o que tiver checado
-     */
-    $('.radio').each(function(){
-
-       $('#user_id').removeClass('required');
-       if($(this).attr('checked')==true && $(this).attr('disabled')!=true) {
-        $('#user_especifico').load('${ap}inc.user_especifico.php',{ 'cat_id': $(this).val() $send_adm_id });
-	$('#user_id').addClass('required');
-
-       } 
-
-    });
-
-
-    /*
-	 *caso haja alteração do campo  
-     */
-    $('.radio').change(function(){
-
-       $('#user_id').removeClass('required');
-       if($(this).attr('checked')==true && $(this).attr('disabled')!=true) {
-        $('#user_especifico').load('${ap}inc.user_especifico.php',{ 'cat_id': $(this).val() });
-	$('#user_id').addClass('required');
-
-  	}
-    });
-
 
 
 
@@ -213,25 +122,17 @@ $include_js = <<<end
 	// ACAO AO CLICAR EM SIM
 	     $("#trash-imagem-sim").click(function(){
 
-		// BOX DE CARREGAMENTO
-		$.blockUI({
-		 message: "<img src='images/loading.gif'>",
-		 css: { 
-                   top:  ($(window).height()-32)/2+'px', 
-                   left: ($(window).width()-32)/2+'px', 
-		   width: '32px' 
-            	 } 
-		});
-
-		$.ajax({
-			type: "POST",
-			url: href_trash,
-			success: function(data){
-			 $.unblockUI();
-			 $.growlUI('Remoção',data);  
-			 $('#tr'+id_trash).hide();
-			}
-		});
+          $LOADING
+          $.ajax({
+            type: "POST",
+            url: href_trash,
+            success: function(data){
+             $.unblockUI();
+             $.growlUI('Remoção',data);  
+             $('#tr'+id_trash).hide();
+             setTimeout("self.location.reload()", 4000);
+            }
+          });
 
 	     });
 

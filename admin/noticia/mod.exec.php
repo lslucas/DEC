@@ -29,29 +29,27 @@
      #autoinsert
      include_once $rp.'inc.autoinsert.php';
 
-     $enviar_para = $res['to_all']==1?'para todos':'especifico';
      $sql= "UPDATE ".TABLE_PREFIX."_${var['path']} SET
 
-  		  ${var['pre']}_titulo=?,
-  		  ${var['pre']}_texto=?,
-  		  ${var['pre']}_url=?,
-  		  ${var['pre']}_data=?
-	";
+              ${var['pre']}_titulo=?,
+              ${var['pre']}_texto=?,
+              ${var['pre']}_data=?
+        	";
      $sql.=" WHERE ${var['pre']}_id=?";
-     $qry=$conn->prepare($sql);
-     $qry->bind_param('ssssi',$res['titulo'], txt_bbcode($res['texto']), $url, $res['data'], $res['item']); 
-     $qry->execute();
+
+     if($qry=$conn->prepare($sql)) {
+
+      $qry->bind_param('sssi',$res['titulo'], txt_bbcode($res['texto']), $res['data'], $res['item']);
+      $qry->execute();
 
 
-   if ($qry==false) echo $msgExiste;
-    else {
-     
-     $qry->close();
-     #insere as fotos/galeria do artigo
-     include_once 'mod.exec.imagem.php';
+         $qry->close();
+         #insere as fotos/galeria do artigo
+         include_once 'mod.exec.imagem.php';
 
-     echo $msgSucesso;
+         echo $msgSucesso;
 
-    }
+
+     } else echo $conn->error;
 
  }

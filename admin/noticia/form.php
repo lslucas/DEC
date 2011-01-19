@@ -5,7 +5,6 @@
 		<li><label for="titulo" class="error-validate">Informe o título</label></li> 
 		<li><label for="data" class="error-validate">Entre com uma data válida</label></li> 
 		<li><label for="texto" class="error-validate">Necessário informar algum texto</label></li> 
-		<li><label for="url" class="error-validate">URL inválida</label></li> 
 	</ol> 
   </div>
 
@@ -32,7 +31,7 @@
 
 
 	<li>	
-	  <label>Imagem<span class='small'><a href='javascript:void(0);' class='addImagem' id='min'>adicionar + imagens</a></span></label>
+	  <label>Imagem<!--<span class='small'><a href='javascript:void(0);' class='addImagem' id='min'>adicionar + imagens</a></span>--></label>
 	  <?php
 		  
 	    if ($act=='update') {
@@ -61,7 +60,7 @@
 
 			 <div id='imagThumb<?=$i?>' style='float:left;display:none;'>
 			 <?php 
-			 
+			
 			    if (file_exists(substr($var['path_thumb'],0)."/".$r_imagem))
 			     echo "<img src='".substr($var['path_thumb'],0)."/".$r_imagem."'>";
 
@@ -75,15 +74,15 @@
 	      <?php
 		      $i++;	
 
-			}
-		   echo '</table><br>';
+          }
+         echo '</table><br>';
 
-	       }
-	       ?>
+           }
+	      ?>
 
 
 		 <div class='divImagem'>
-		   <input class="imagem <?php if ($act=='insert') echo ' required';?>" type='file' name='imagem0' id='imagem' alt='0' style="height:18px;font-size:7pt;margin-bottom:8px;">
+		   <input class="imagem" type='file' name='imagem0' id='imagem' alt='0' style="height:18px;font-size:7pt;margin-bottom:8px;">
 		   <br><span class='small'>- JPEG, PNG ou GIF;<?=$var['imagemWidth_texto'].$var['imagemHeight_texto']?></span>
 		 </div>
 		 </p>
@@ -109,12 +108,7 @@
 	</li>
 
 
-	<li>	
-	  <label>Website <span class='small'>Notícia possui algum link</span></label>
-	  <input type='text' name='url' id='url' class='url' value='<?=$val['url']?>'>
-	</li>
-
-    </ol>
+ </ol>
 
 
 
