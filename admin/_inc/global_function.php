@@ -1,4 +1,31 @@
 <?php
+/*
+ *get last twitter status
+ */
+function getTwitterStatus($userid,$x=1){
+
+$url = "http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=$userid&count=$x";
+
+$xml = simplexml_load_file($url) or die('Server is too busy!');
+        echo '<ul class="twitter">';
+       foreach($xml->channel->item as $status){
+       $text = twitterify( $status->description );
+           echo '<li>'.$text.'</li>';
+       }
+    echo '</ul>';
+ }
+
+ function twitterify($ret) {
+  $ret = preg_replace("#(^|[\n ])([\w]+?://[\w]+[^ \"\n\r\t< ]*)#", "\\1<a href=\"\\2\" >\\2</a>", $ret);
+  $ret = preg_replace("#(^|[\n ])((www|ftp)\.[^ \"\t\n\r< ]*)#", "\\1<a href=\"http://\\2\" >\\2</a>", $ret);
+  $ret = preg_replace("/@(\w+)/", "<a href=\"http://www.twitter.com/\\1\" >@\\1</a>", $ret);
+  $ret = preg_replace("/#(\w+)/", "<a href=\"http://search.twitter.com/search?q=\\1\" >#\\1</a>", $ret);
+return $ret;
+}
+
+
+
+
 /* LIMIT NEWLINE
  * limitBreaks, prevents texts with a lot of enters/breaks after each other
  *
