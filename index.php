@@ -356,7 +356,7 @@ img.next { margin-left:5px; }
                   <div class='content-box'>
                     <h4>TWITTER</h4>
                     <div style='height:6px;'></div>
-                    <?=getTwitterStatus('lslucas')?>
+                    <?=getTwitterStatus('redemunicipal')?>
                   </div>
                 </td>
               </tr>
