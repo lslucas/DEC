@@ -45,7 +45,7 @@
   $host = 'http://localhost/';
 
   else
-   $host = 'http://'.$_SERVER['HTTP_HOST'].'/dec/admin/';
+   $host = 'http://'.$_SERVER['HTTP_HOST'].'/sites/dec/admin/';
 
  $path = 'admin';
  $base = $host.$path.'/';
