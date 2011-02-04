@@ -51,10 +51,12 @@
 	 // in its *temporary* location in the server (often, it is /tmp)
 	 if ($handle->uploaded) {
 	   $handle->file_new_name_body  = $filename;
+     $handle->image_convert = jpg;
 	   $handle->Process($var['path_original']);
 	   if (!$handle->processed) echo 'error : ' . $handle->error;
 
 	   $handle->file_new_name_body  = $filename;
+     $handle->image_convert = jpg;
 	   $handle->image_resize        = true;
 	   #$handle->image_ratio_x        = true;
 	   $handle->image_ratio_crop    = true;
@@ -64,6 +66,7 @@
 	   if (!$handle->processed) echo 'error : ' . $handle->error;
 
 	   $handle->file_new_name_body  = $filename;
+     $handle->image_convert = jpg;
 	   $handle->image_resize        = true;
 	   #$handle->image_ratio_x        = true;
 	   $handle->image_ratio_crop    = true;
