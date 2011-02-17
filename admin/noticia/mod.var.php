@@ -36,7 +36,7 @@
 
 
 
-    $field  = array('not_id', 'not_titulo','not_data', 'not_texto', 'not_url');
+    $field  = array('not_id', 'not_titulo','not_subtitulo','not_data', 'not_texto', 'not_url');
     $lfield = implode(',',$field);
     $vfield = implode(',$',$field);
     $vfield = '$'.$vfield;

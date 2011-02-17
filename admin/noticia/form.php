@@ -3,6 +3,7 @@
 	<ol> 
 		<li><label for="imagem" class="error-validate">Envie alguma imagem</label></li> 
 		<li><label for="titulo" class="error-validate">Informe o título</label></li> 
+		<li><label for="subtitulo" class="error-validate">Informe o sub-título</label></li> 
 		<li><label for="data" class="error-validate">Entre com uma data válida</label></li> 
 		<li><label for="texto" class="error-validate">Necessário informar algum texto</label></li> 
 	</ol> 
@@ -92,6 +93,12 @@
 	<li>	
 	  <label>Título *<span class='small'>Digite o título</span></label>
 	  <input type='text' name='titulo' id='titulo' class='required' value='<?=$val['titulo']?>'>
+	</li>
+
+
+	<li>	
+	  <label>Sub-Título *<span class='small'>Digite o sub-título</span></label>
+	  <input type='text' name='subtitulo' id='subtitulo' class='required' value='<?=$val['subtitulo']?>'>
 	</li>
 
 

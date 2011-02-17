@@ -32,6 +32,7 @@
      $sql= "UPDATE ".TABLE_PREFIX."_${var['path']} SET
 
               ${var['pre']}_titulo=?,
+              ${var['pre']}_subtitulo=?,
               ${var['pre']}_texto=?,
               ${var['pre']}_data=?
         	";
@@ -39,7 +40,7 @@
 
      if($qry=$conn->prepare($sql)) {
 
-      $qry->bind_param('sssi',$res['titulo'], txt_bbcode($res['texto']), $res['data'], $res['item']);
+      $qry->bind_param('ssssi',$res['titulo'],$res['subtitulo'], txt_bbcode($res['texto']), $res['data'], $res['item']);
       $qry->execute();
 
 

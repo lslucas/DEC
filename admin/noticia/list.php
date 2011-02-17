@@ -2,6 +2,7 @@
 
 $sql = "SELECT  ${var['pre']}_id,
 		${var['pre']}_titulo,
+		${var['pre']}_subtitulo,
 		${var['pre']}_status,
 		${var['pre']}_data data_en,
 		DATE_FORMAT(${var['pre']}_data,'%d/%m/%y') data,
@@ -19,7 +20,7 @@ $sql = "SELECT  ${var['pre']}_id,
 
     #$sql->bind_param('s', $data); 
     $qry->execute();
-    $qry->bind_result($id, $nome, $status, $data_en, $data, $imagem);
+    $qry->bind_result($id, $nome, $subtitulo, $status, $data_en, $data, $imagem);
 ?>
 <h1><?=$var['mono_plural']?></h1>
 <p class='header'></p>
@@ -84,6 +85,7 @@ $permissoes='';
         <td>
 	
 	<?=$nome?>
+	<br/><?=$subtitulo?>
 	<div class='row-actions'><?=$row_actions?></div></td>
 
       </tr>
