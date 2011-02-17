@@ -71,6 +71,21 @@
 			});
 
 
+      $('[name="newsletter"]').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+          url: $(this).attr('action'),
+          type: $(this).attr('method'),
+          data: $(this).serialize(),
+          success: function(msg) {
+           $('#return-newsletter').html(msg);
+          }
+        });
+
+      });
+
+
     });
 
   </script>
@@ -353,7 +368,7 @@ img.next { margin-left:5px; }
                   <div class='content-box'>
                     <h4>TWITTER</h4>
                     <div style='height:6px;'></div>
-                    <?=getTwitterStatus('redemunicipal')?>
+                    <? //getTwitterStatus('redemunicipal'); ?>
                   </div>
                 </td>
               </tr>
@@ -364,8 +379,8 @@ img.next { margin-left:5px; }
                 <td height="64" align="left" valign="top" background="images/pagina_inicial/bg_newsletter.jpg">
                   <div class='content-box'>
                     <h4>NEWSLETTER</h4>
-
-                    <form name='news' action='controller/newsletter.php' method='post'>
+                    <div id='return-newsletter'></div>
+                    <form name='newsletter' action='newsletter.php' method='post'>
 
                        <input type='text' name='news-nome' placeholder='Nome'/>
                        <input type='text' name='news-email' placeholder='E-mail'/>
