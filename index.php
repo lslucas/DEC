@@ -50,6 +50,64 @@
 
 
 
+    /*
+     *query de atribução de aula
+     */
+    $sql_atrib = "SELECT atrib_id, atrib_titulo, DATE_FORMAT(atrib_data, '%d/%m') data
+                  FROM ".TABLE_PREFIX."_atribuicao_aula
+
+                      WHERE atrib_titulo IS NOT NULL
+                            AND atrib_status=1
+
+                            ORDER BY atrib_data DESC
+                            LIMIT 0,2";
+
+    $qry_atrib= $conn->prepare($sql_atrib);
+    $qry_atrib->execute();
+    $qry_atrib->store_result();
+    $qry_atrib->bind_result($id, $titulo, $data);
+
+
+    /*
+     *função que gera lista de links para download
+     links de atribuições de aulas
+     */
+    function atrib_arquivos($atrib_id) {
+      global $conn;
+
+
+      if(is_null($atrib_id))
+        exit('Atribuição de aula inválida');
+
+        $sql_atriba = "SELECT raa_id, raa_arquivo, DATE_FORMAT(raa_timestamp, '%d/%m/%Y') data
+                        FROM ".TABLE_PREFIX."_r_atrib_arquivo 
+                         WHERE raa_atrib_id={$atrib_id}
+                          AND raa_arquivo IS NOT NULL
+                          AND raa_status=1
+                       ORDER BY raa_pos ASC";
+
+        if(!$qry_atriba= $conn->prepare($sql_atriba))
+          echo $conn->error;
+
+        else {
+
+            $qry_atriba->execute();
+            $qry_atriba->bind_result($id, $arquivo, $data);
+
+
+              while($qry_atriba->fetch()) {
+                echo "\n\t\t\t<div style='display:block;margin-bottom:5px;whitespace:nowrap;min-width:220px;'>";
+                echo "\n\t\t\t<img src='images/ico-download.jpg' border=0 class='ico' width=10/>";
+                echo "\n\t\t\t{$data} - <a href='atribuicoes_de_aula/$arquivo' target='_blank'>{$arquivo}</a>";
+                echo "\n\t\t\t</div>";
+              }
+
+            $qry_atriba->close();
+        }
+
+    }
+
+
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -58,12 +116,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>DEC</title>
 
+  <link rel="stylesheet" href="js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+
   <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
   <script type="text/javascript" src="js/loopedslider.js"></script>
+  <script type="text/javascript" src="js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
   <script>
 
     $(function() {
 
+      /*
+       *lightbox para atribuições de aulas
+       */
+      $('.lightbox').fancybox();
+
+      /*
+       *destaque de imagem rotativo
+       */
 			$('#destaque').loopedSlider({
 				addPagination: false,
 				autoStart: 5000,
@@ -129,6 +198,7 @@ h5 { font-size:0.95em; }
 .content-box { padding:10px; }
 .sub-box > img { float:left; display:table-cell; }
 .sub-box > div { padding-left:25px; }
+.box { width:auto; }
 
 a, a:link, a:visited {
 
@@ -264,6 +334,7 @@ img.next { margin-left:5px; }
                  $i++;
                 }
 
+                $qry_dest->close();
               ?>
                 </div>
           </div>
@@ -299,6 +370,7 @@ img.next { margin-left:5px; }
                  $i++;
                 }
 
+                $qry_not->close();
               ?>
 
 
@@ -326,23 +398,28 @@ img.next { margin-left:5px; }
 
                 <h5>Comunicado de Atribuições de Aula</h5>
 
-                <div style='height:18px;'></div>
-                <div class='sub-box'>
-                  <img src='images/ico-download.jpg' border=0 class='ico'/>
-                  <div>
-                    PI - Edital 29/09/2010
-                    <br/><a href='javascript:void(0);'>(download)</a>
-                  </div>
-                </div>
-                <div style='height:18px;'></div>
-                <div class='sub-box'>
-                  <img src='images/ico-download.jpg' border=0 class='ico'/>
-                  <div>
-                    PIII - Ciências 29/19/2011
-                    <br/><a href='javascript:void(0);'>(download)</a>
-                  </div>
-                </div>
+              <?php
 
+                while($qry_atrib->fetch()) {
+
+                  echo "\n\t\t<div style='height:18px;'></div>";
+                  echo "\n\t\t\t<div class='sub-box'>";
+                  echo "\n\t\t\t\t<img src='images/ico-download.jpg' border=0 class='ico'/>";
+                  echo "\n\t\t\t<div>";
+                  echo "\n\n\t\t\t${titulo} ${data}";
+                  echo "\n\t\t\t<br/><a href='#box{$id}' class='lightbox'>(download)</a>";
+                  echo "\n\t\t\t<div style='display:none;'><div id='box{$id}' class='box'>";
+                  echo "\n\t\t\t<h3>Links para download</h3>";
+                  echo "\n\t\t\t<p><h4>".$titulo."</h4></p>";
+                  atrib_arquivos($id);
+                  echo "\n\t\t\t</div></div>";
+                  echo "\n\t\t</div>";
+                  echo "\n\t</div>";
+                }
+
+                $qry_atrib->close();
+
+              ?>
               </div>
             </td>
             <td width="26"><h4>&nbsp;</h4></td>
