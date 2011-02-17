@@ -40,7 +40,7 @@
 	<label>Área *<span class='small'>Área da categoria</span></label>
      <select class='required' name='area' id='area'>
         <option value=''>Selecione</option>
-        <option value='interesse'>Interesse</option>
+        <option value='escola'<?php if($act=='update' && $val['area']=='escola') echo ' selected';?>>Escolas</option>
      </select>
 	</li>
 
