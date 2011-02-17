@@ -13,7 +13,7 @@
     /*
      *query das notícias
      */
-    $sql_not = "SELECT not_id, not_titulo, not_tipo
+    $sql_not = "SELECT not_id, not_titulo, not_subtitulo, not_tipo
                   FROM ".TABLE_PREFIX."_noticia
 
                       WHERE not_titulo IS NOT NULL
@@ -25,7 +25,7 @@
     $qry_not= $conn->prepare($sql_not);
     $qry_not->execute();
     $qry_not->store_result();
-    $qry_not->bind_result($id, $titulo, $tipo);
+    $qry_not->bind_result($id, $titulo, $subtitulo, $tipo);
 
 
 
@@ -264,24 +264,21 @@ img.next { margin-left:5px; }
             <td align="left" valign="top">
               <span class="textoPadrao">NOTICÍAS</span>
               <div style='height:22px;'></div>
-
-              <h3>Enade</h3>
               <?php
 
                 $i = 0;
                 while($qry_not->fetch()) {
 
-                  if($i==1) {
+
+                  echo "<h3>${titulo}</h3>";
+                  echo "<div style='height:8px;'></div>";
+                  echo "<a href='noticias.php?item=${id}'>${subtitulo}</a>";
+
+                  if($i==0) {
                     echo "<div style='height:12px;'></div>";
                     echo "<hr>";
                     echo "<div style='height:12px;'></div>";
-                    echo "<h3>Universidades</h3>";
                   }
-
-
-
-                  echo "<div style='height:8px;'></div>";
-                  echo "<a href='noticias.php?item=${id}'>${titulo}</a>";
 
 
                  $i++;
@@ -384,7 +381,7 @@ img.next { margin-left:5px; }
             <td width="26">&nbsp;</td>
             <td width="232" height="160" align="left" valign="top"><table width="232" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td><a href='http://twitter.com/lslucas' target='_blank'><img src="images/pagina_inicial/btn_twitter.jpg" width=232 height=24 border=0/></a></td>
+                <td><a href='http://twitter.com/redemunicipal' target='_blank'><img src="images/pagina_inicial/btn_twitter.jpg" width=232 height=24 border=0/></a></td>
               </tr>
               <tr>
                 <td><img src="images/pagina_inicial/space.gif" width="1" height="8" border="0" /></td>
