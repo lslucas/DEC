@@ -1,0 +1,17 @@
+#nao permite indexação
+Options -Indexes
+ #desabilita opcao pra qd vc entra com index ele procura por index.php
+Options -MultiViews
+
+#desabilita register_globals e magic_quotes do php
+php_flag register_globals off
+php_flag magic_quotes_gpc off
+
+<IfModule mod_rewrite.c>
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule ^atribuicoes_de_aula/(.+)$ /dec/images/atribuicao_aula/$1 [NC]
+RewriteRule ^concursos/(.+)$ /dec/images/concursos/$1 [NC]
+RewriteRule ^legislacao/(.+)$ /dec/images/legislacao/$1 [NC]
+</IfModule>
