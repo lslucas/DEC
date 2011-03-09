@@ -1,0 +1,111 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+  font-weight:normal;
+	font-size: 11px;
+	color: #464646;
+
+} body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image: url(images/bg/bg_geral.jpg);
+	background-repeat: no-repeat;
+	background-color: #00537D;
+} hr {
+
+  margin-top:10px;
+  margin-bottom:10px;
+  border:0px;
+  border-top:1px solid #CECECE;
+
+} h1, h2, h3, h4, h5, h6 {
+
+  color: #104C54;
+  font-weight:bolder;
+  margin:0px;
+  padding:0px;
+
+}
+
+h3 { font-size:18px; }
+h4 { font-size:1.2em; }
+h5 { font-size:0.95em; }
+.content-box { padding:10px; }
+.sub-box > img { float:left; display:table-cell; }
+.sub-box > div { padding-left:25px; }
+.box { width:auto; }
+
+a, a:link, a:visited {
+
+  text-decoration:none;
+  color:#656565;
+  font-size:12px;
+  font-weight:normal;
+
+} a:hover, a:active {
+
+  text-decoration:underline;
+  color:#104C54;
+
+} .fontTitulo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11px;
+	color: #024362;
+}
+.textoPadrao {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #999;
+}
+
+/*
+ *menu
+ */
+.menu a, .menu a:link, .menu a:visited, .menu a:hover, .menu a:active {
+
+  color:white;
+
+}
+/*
+ *marcadores
+ */
+ul.twitter { list-style:none; margin:0; padding:0; }
+
+/*
+ *formulários
+ */
+input::-webkit-input-placeholder { color: #424242; }
+input:-moz-placeholder { color: #424242; }
+
+
+input[type='checkbox'], input[type='password'], input[type='text'] {
+
+  width:180px;
+  height:16px;
+  border:1px solid #939393;
+  background-color:#B1B1B1;
+  color:#424242;
+  font-size:12px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+label { display:block; font-weight:bold; color:#555; }
+textarea, select { border:1px solid #939393; background-color:#B1B1B1; color:#424242; font-size:12px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+input[name='news-email'], input[name='news-nome'] { margin-right:8px; }
+input[name='news-submit'] { bottom:-3px; display:inline; position:relative; }
+/*
+* Required 
+*/
+.container { width:350px; height:200px; overflow:hidden; position:relative; cursor:pointer; }
+.slides { position:absolute; top:0; left:0; margin-left:0px; }
+.slides > div { position:absolute; top:0; width:350px; display:none; text-align:left; }
+.slides > div > a, .slides > div > a:link, .slides > div > a:visited { text-decoration:none; color:#777777; font-size:12px; font-weight:bold; text-align:left; }
+.slides > div > a:hover, .slides > div > a:active { text-decoration:none; color:#656565; font-size:12px; font-weight:bold; text-align:left; }
+.slides > div > span, .slides > div > a > span { position:relative; bottom:0px; margin-top:5px; display:block; color:#777777; text-align:left; font-size:12px; font-weight:bold; width:310px; height:15px; white-space:no-wrap; }
+.slides > div > a > img { margin-bottom:5px; }
+div#arrows { width:40px; text-align:right; float:right; position:relative; margin-right:5px; margin-top:-20px; }
+div#arrows > img{ cursor:pointer; } 
+img.next { margin-left:5px; }
