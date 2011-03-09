@@ -6,6 +6,8 @@
  #define valor da moeda
  setlocale(LC_MONETARY, 'pt_BR');
 
+ #limite de timeout para 200
+ set_time_limit(200);
 # EMAILS
 ########
  define('EMAIL','lslucas@gmail.com');
