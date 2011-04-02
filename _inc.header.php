@@ -49,6 +49,7 @@
   </script>
   <link rel="stylesheet" href="js/coin-slider-styles.css" type="text/css" /> 
   <link rel="stylesheet" href="style.css" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -72,7 +73,7 @@
         <td align="center" valign="middle"><a href='programas.php'>Programas</a></td>
         <td align="center" valign="middle"><a href='concursos.php'>Concursos</a></td>
         <td align="center" valign="middle"><a href='noticias.php'>Noticías</a></td>
-        <td align="center" valign="middle"><a href='contato.php'>Legislação</a></td>
+        <td align="center" valign="middle"><a href='legislacao.php'>Legislação</a></td>
         <td align="center" valign="middle"><a href='contato.php'>Contato</a></td>
         <td width="160">&nbsp;</td>
       </tr>
