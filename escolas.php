@@ -20,6 +20,7 @@
                       WHERE rec_cat_id IS NOT NULL
                             AND rec_esc_id IS NOT NULL
                             AND EXISTS(SELECT null FROM ".TABLE_PREFIX."_escola WHERE esc_id=rec_esc_id AND esc_status=1)
+                            GROUP BY rec_cat_id
                ";
 
     if(!$qry_esc= $conn->prepare($sql_esc)) {
@@ -73,7 +74,7 @@
                     echo "<tr>";
 
               ?>
-                <td height="54" width="99" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><a href='escolas_interna.php?cat=<?=$cat_id?>'><h4><?=$cat?></h4></a></td>
+                <td height="54" width="99" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><a href='escolas_interna.php?cat=<?=$cat_id?>'><h4 style='font-size:8pt'><?=trim($cat)?></h4></a></td>
                 <td width="7">&nbsp;</td>
               <?php
                 if($i==5) {
