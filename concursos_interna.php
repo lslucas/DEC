@@ -60,7 +60,7 @@
             </td>
           </tr>
           <tr>
-            <td><a href="concursos.php"><img src="images/voltarparanoticias.png" width="130" height="31" border="0" /></a>
+            <td><a href="concursos.php"><img src="images/btnVoltar.png" border="0" /></a>
 <?php
 
       $qry_conc->close();
