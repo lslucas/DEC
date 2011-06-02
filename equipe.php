@@ -1,21 +1,21 @@
 <?php
-      include_once '_inc.header.php';
-?>
-<style>
+$varStyle=<<<end
   .div { display:none; }
   .team{ cursor:pointer; }
-</style>
-<script type='javascript'>
-  jQuery(function($) {
-    $('.team').click(function() {
-      alert('teste');
+end;
+$varjQuery=<<<end
 
-      var $divId = $(this).attr('alt');
-      $('.div').slideUp();
-      $('#'+$divId).slideToggle();
+    $('#secretaria').fadeIn();
+    $('.team').click(function() {
+
+      var divId = $(this).attr('alt');
+      $('.div').hide();
+      $('#'+divId).fadeIn();
     });
-  });
-</script>
+end;
+
+      include_once '_inc.header.php';
+?>
 <table width="300" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><h1>EQUIPE</h1></td>
@@ -58,58 +58,61 @@ São 112 unidades escolares e mais de 35 mil alunos que demandam atividades de u
       <tr>
         <td height="205" valign="top"><table width="700" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="417"><table width="417" border="0" cellspacing="0" cellpadding="0" id="botoes">
+            <td width="417" valign='top'><table width="417" border="0" cellspacing="0" cellpadding="0" id="botoes">
               <tr>
-                <td height="54" width="99" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><span class='team' alt='bolsa'><h4>Bolsas de<br /> Estudos</h4></span></td>
+                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><span  class='team' alt='secretaria'><h4>Secretário<br />
+                  Geral</h4></span></td>
                 <td width="7">&nbsp;</td>
-                <td width="99" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><span class='team' alt='compras'><h4>Compras</h4></span></td>
-                <td width="7">&nbsp;</td>
-                <td width="99"  align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><span class='team' alt='comunicacao'><h4>Comunicação</h4></span></td>
-                <td width="7">&nbsp;</td>
+                <td height="54" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='diretor'>Diretor do<br />
+                  Departameno</h4></td>
+                <td>&nbsp;</td>
+                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='gerencia'>Gerência</h4></td>
+                <td>&nbsp;</td>
                 <td width="99"  align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><span class='team' alt='coordenacao'><h4>Coordenação</h4></span></td>
               </tr>
               <tr>
                 <td colspan="7" height="5"></td>
               </tr>
               <tr>
-                <td height="54" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='diretor'>Diretor do<br />
-                  Departameno</h4></td>
-                <td>&nbsp;</td>
-                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='gerencia'>Gerência</h4></td>
-                <td>&nbsp;</td>
-                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='informatica'>Informática</h4></td>
-                <td>&nbsp;</td>
-                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='merenda'>Merenda<br />
-                  Escolar</h4></td>
-              </tr>
-              <tr>
-                <td colspan="7" height="5"></td>
-              </tr>
-              <tr>
-                <td height="54" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='profissionais'>Profissionais<br />
-                  Capacitados</h4></td>
-                <td>&nbsp;</td>
-                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='projetos'>Projetos</h4></td>
-                <td>&nbsp;</td>
-                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='secretaria'>Secretária<br />
-                  Geral</h4></td>
-                <td>&nbsp;</td>
-                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='pagamento'>Setor de<br />
-                  Pagamento</h4></td>
-              </tr>
-              <tr>
-                <td colspan="7" height="5"></td>
-              </tr>
-              <tr>
-                <td height="54" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='setores'>Setores</h4></td>
-                <td>&nbsp;</td>
-                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='plantao'>Plantão</h4></td>
-                <td>&nbsp;</td>
                 <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='supervisao'>Supervisão<br />
                   Orientação</h4></td>
                 <td>&nbsp;</td>
+                <td height="54" width="99" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><span class='team' alt='bolsa'><h4>Bolsas de<br /> Estudos</h4></span></td>
+                <td>&nbsp;</td>
+                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='pagamento'>Setor de<br />
+                  Pagamento</h4></td>
+                <td>&nbsp;</td>
+                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='projetos'>Projetos</h4></td>
+              </tr>
+              <tr>
+                <td colspan="7" height="5"></td>
+              </tr>
+              <tr>
+                <td width="99"  align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><span class='team' alt='comunicacao'><h4>Comunicação</h4></span></td>
+                <td width="7">&nbsp;</td>
+                <td width="99" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><span class='team' alt='compras'><h4>Compras</h4></span></td>
+                <td width="7">&nbsp;</td>
+                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='plantao'>Plantão</h4></td>
+                <td>&nbsp;</td>
+                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='informatica'>Informática</h4></td>
+
+              </tr>
+              <tr>
+                <td colspan="7" height="5"></td>
+              </tr>
+              <tr>
+                <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='merenda'>Merenda<br />
+                  Escolar</h4></td>
+                <td>&nbsp;</td>
+                <td height="54" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='setores'>Setores</h4></td>
+                <td>&nbsp;</td>
+
                 <td align="center" valign="center" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='transporte'>Transporte<br />
                   Escolar</h4></td>
+                <td>&nbsp;</td>
+                <td height="54" align="center" valign="middle" style="background:url(images/botoes_censo.png) no-repeat;"><h4 class='team' alt='profissionais'>Profissionais<br />
+                  Capacitados</h4></td>
+
               </tr>
             </table></td>
             <td width="20">&nbsp;</td>
@@ -310,16 +313,14 @@ São 112 unidades escolares e mais de 35 mil alunos que demandam atividades de u
             <div  id='secretaria' class='div'>
             <table width="263" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td height="65" style="padding-left:17px;padding-right:17px;"><h2>SECRETARIA GERAL</h2></td>
+                <td height="65" style="padding-left:17px;padding-right:17px;"><h2>SECRETARIO GERAL</h2></td>
               </tr>
               <tr>
-                <td valign="top" style="padding-left:17px;padding-right:17px;"><h4>O setor responsável pelas bolsas de estudos atua em todos os níveis, desde a inscrição até a concessão da bolsa.
-                  </h4>
-                  <h4>O trabalho é feito em parceria com o
-                    Departamento de Ação Social.</h4></td>
+                <td valign="top" style="padding-left:17px;padding-right:17px;"><h4>Formação: Superior em Letras – especialização em Literatura
+<br>Experiência profissional e administrativa de 30 anos como professor da Universidade de Taubaté, UNITAU, Diretor do Colégio Industrial, Diretor do Departamento de Ação Social da Prefeitura Municipal de Taubaté.</h4></td>
               </tr>
               <tr>
-                <td style="padding-left:17px;padding-right:17px;"><h4>Responsável: <span style="color:#003F5F">Regiane Pasquali</span></h4></td>
+                <td style="padding-left:17px;padding-right:17px;"><h4>Responsável: <span style="color:#003F5F">Professor Carlos Roberto Rodrigues</span></h4></td>
               </tr>
               </table>
              </div>

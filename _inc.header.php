@@ -43,13 +43,23 @@
 
       });
 
-
+    <?php
+      if(isset($varjQuery))
+        echo "\t\t".$varjQuery;
+    ?>
     });
 
   </script>
   <link rel="stylesheet" href="js/coin-slider-styles.css" type="text/css" /> 
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <?php
+    if(isset($varStyle)) {
+      echo "\t\t<style>";
+      echo "\t\t".$varStyle;
+      echo "\t\t</style>";
+    }
+  ?>
 
 </head>
 
@@ -60,7 +70,7 @@
       <tr>
         <td width="252" height="108" align="center" valign="middle"><img src="images/bg/logo_taubate.png" width="193" height="51" border="0" /></td>
         <td width="288">&nbsp;</td>
-        <td width="210" align="center" valign="middle"><img src="images/bg/livros_topo.jpg" width="137" height="76" /></td>
+        <td width="210" align="center" valign="middle"><table class='testeira'><tr><td nowrap>Secretaria de Educação</td><td width=140><img src="images/bg/livros_topo.jpg" width="137" height="76" /></td></tr></table></td>
       </tr>
     </table></td>
   </tr>
@@ -75,7 +85,7 @@
         <td align="center" valign="middle"><a href='noticias.php'>Noticías</a></td>
         <td align="center" valign="middle"><a href='legislacao.php'>Legislação</a></td>
         <td align="center" valign="middle"><a href='contato.php'>Contato</a></td>
-        <td width="160">&nbsp;</td>
+        <td width="150" align='right' style='padding-right:10px;'><a href='http://twitter.com/redemunicipal' target='_blank'><img src='images/twitter_ico.gif' border=0/></a>&nbsp;<a href='http://facebook.com/redemunicipal' target='_blank'><img src='images/facebook_ico.gif' border=0/></a></td>
       </tr>
     </table></td>
   </tr>

@@ -28,11 +28,11 @@
               <tr>
                 <td height="54" align="left" valign="middle" ><table width="665" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td height="54" width="99" align="left" valign="middle" ><img src="images/btn_federal.png" width="129" height="44" border="0" /></td>
+                    <td height="54" width="99" align="left" valign="middle"><a href='http://portal.mec.gov.br/index.php?option=com_content&view=article&id=12907:legislacoes&catid=70:legislacoes' target='_blank'><img src="images/btn_federal.png" width="129" height="44" border="0" /></a></td>
                     <td width="7">&nbsp;</td>
-                    <td width="99" align="center" valign="middle" ><img src="images/btn_estadual.png" width="129" height="44" border="0" /></td>
+                    <td width="99" align="center" valign="middle"><a href='http://www.educacao.sp.gov.br/' target='_blank'><img src="images/btn_estadual.png" width="129" height="44" border="0" /></a></td>
                     <td width="7">&nbsp;</td>
-                    <td width="99"  align="center" valign="middle" ><img src="images/btn_municipal.png" width="129" height="44" border="0" /></td>
+                    <td width="99"  align="center" valign="middle"><a href='legislacao_totalalunos.php'><img src="images/btn_municipal.png" width="129" height="44" border="0" /></a></td>
                     <td width="7">&nbsp;</td>
                     <td  align="center" valign="middle" >&nbsp;</td>
                     </tr>

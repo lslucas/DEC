@@ -227,11 +227,9 @@ a, a:link, a:visited {
 /*
  *menu
  */
-.menu a, .menu a:link, .menu a:visited, .menu a:hover, .menu a:active {
-
-  color:white;
-
-}
+.menu a, .menu a:link, .menu a:visited, .menu a:hover, .menu a:active { color:white; }
+.testeira { width:430px; }
+.testeira td { font-size:18pt; font-weight:bold; color:#898989; }
 /*
  *marcadores
  */
@@ -281,7 +279,7 @@ img.next { margin-left:5px; }
       <tr>
         <td width="252" height="108" align="center" valign="middle"><img src="images/bg/logo_taubate.png" width="193" height="51" border="0" /></td>
         <td width="288">&nbsp;</td>
-        <td width="210" align="center" valign="middle"><img src="images/bg/livros_topo.jpg" width="137" height="76" /></td>
+		<td width="210" align="center" valign="middle"><table class='testeira'><tr><td nowrap>Secretaria de Educação</td><td width=140><img src="images/bg/livros_topo.jpg" width="137" height="76" /></td></tr></table></td>
       </tr>
     </table></td>
   </tr>
@@ -296,7 +294,7 @@ img.next { margin-left:5px; }
         <td align="center" valign="middle"><a href='noticias.php'>Noticías</a></td>
         <td align="center" valign="middle"><a href='contato.php'>Legislação</a></td>
         <td align="center" valign="middle"><a href='contato.php'>Contato</a></td>
-        <td width="160">&nbsp;</td>
+        <td width="150" align='right' style='padding-right:10px;'><a href='http://twitter.com/redemunicipal' target='_blank'><img src='images/twitter_ico.gif' border=0/></a>&nbsp;<a href='http://facebook.com/redemunicipal' target='_blank'><img src='images/facebook_ico.gif' border=0/></a></td>
       </tr>
     </table></td>
   </tr>
@@ -445,7 +443,7 @@ img.next { margin-left:5px; }
                   <div class='content-box'>
                     <h4>TWITTER</h4>
                     <div style='height:6px;'></div>
-                    <? //getTwitterStatus('redemunicipal'); ?>
+                    <?=getTwitterStatus('redemunicipal')?>
                   </div>
                 </td>
               </tr>

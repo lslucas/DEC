@@ -63,11 +63,10 @@ a, a:link, a:visited {
 /*
  *menu
  */
-.menu a, .menu a:link, .menu a:visited, .menu a:hover, .menu a:active {
+.menu a, .menu a:link, .menu a:visited, .menu a:hover, .menu a:active { color:white; }
+.testeira { width:430px; }
+.testeira td { font-size:18pt; font-weight:bold; color:#898989; }
 
-  color:white;
-
-}
 /*
  *marcadores
  */
